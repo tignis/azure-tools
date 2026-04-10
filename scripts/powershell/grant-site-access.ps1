@@ -8,8 +8,12 @@
       2. Grant site-level permission (read/write/fullcontrol) on a specific site
 
     Run directly from GitHub:
-      & ([scriptblock]::Create((irm https://raw.githubusercontent.com/OWNER/REPO/main/grant-site-access.ps1))) `
-          -SiteId "tenant.sharepoint.com,guid,guid" -AppId "client-id" -SpObjectId "object-id"
+      irm "https://raw.githubusercontent.com/tignis/azure-tools/refs/heads/main/scripts/powershell/grant-site-access.ps1" `
+          -OutFile grant-site-access.ps1
+      ./grant-site-access.ps1 `
+          -SpObjectId "<service-principal-object-id>" `
+          -AppId "<application-client-id>" `
+          -SiteId "<tenant>.sharepoint.com,<site-guid>,<web-guid>"
 
 .PARAMETER AppName
     Azure Web App name (to look up managed identity). Use with -ResourceGroup.
